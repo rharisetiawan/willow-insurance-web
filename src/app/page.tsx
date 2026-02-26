@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Mail, Briefcase, ChevronRight, Github, Code2, Database, Layout, Headphones, ArrowUpRight, BarChart3, Target, Settings } from 'lucide-react';
+import { Mail, Briefcase, ChevronRight, Github, Code2, Database, Layout, Headphones, ArrowUpRight, BarChart3, Target, Settings, Rocket } from 'lucide-react';
 
 export default function Home() {
   const scrollTo = (id: string) => {
@@ -59,11 +59,11 @@ export default function Home() {
           />
           <div className="absolute bottom-6 left-6 z-20 flex items-center gap-4 glass-effect px-4 py-3 rounded-xl">
             <div className="w-10 h-10 bg-brand-orange rounded-full flex items-center justify-center">
-              <span className="font-bold text-white text-lg">+</span>
+              <Rocket size={20} className="text-white" />
             </div>
             <div>
-              <div className="text-sm font-semibold text-white">Available for Work</div>
-              <div className="text-xs text-gray-400">Open to new opportunities</div>
+              <div className="text-sm font-semibold text-white">Current Focus</div>
+              <div className="text-xs text-gray-400">Scaling DashTeam360 Operations</div>
             </div>
           </div>
         </div>
@@ -106,55 +106,72 @@ export default function Home() {
       </section>
 
       {/* Experience Timeline */}
-      <section id="experience" className="py-32 px-6 max-w-3xl mx-auto flex flex-col items-center">
-        <h2 className="text-2xl font-bold mb-16 relative">
+      <section id="experience" className="py-32 px-6 max-w-4xl mx-auto flex flex-col items-center">
+        <h2 className="text-3xl font-bold mb-20 relative text-white">
           Experience Timeline
           <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-brand-orange rounded-full"></span>
         </h2>
-        <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-[#282a36] before:to-transparent">
-          {/* Card 1 */}
-          <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#0f1015] bg-[#1a1b23] group-[.is-active]:bg-brand-orange text-white shadow shrink-0 inset-y-0 md:mx-auto absolute left-0 md:relative md:translate-x-0 ml-0 z-10">
-              <Briefcase size={16} />
-            </div>
-            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] pb-4 ml-auto md:ml-0 md:group-even:text-right">
-              <div className="glass-effect p-6 rounded-2xl border border-[#282a36] ml-4 md:ml-0 md:group-odd:ml-6 md:group-even:mr-6 text-left relative before:absolute before:top-1/2 before:-translate-y-1/2 before:w-3 before:h-3 before:bg-[#1a1b23] before:border-l before:border-b before:border-[#282a36] before:rotate-45 group-odd:before:-left-[7px] md:group-even:before:-right-[7px] md:group-even:before:border-none md:group-even:before:border-r md:group-even:before:border-t md:group-even:before:border-[#282a36]">
-                <div className="flex flex-wrap items-center justify-between font-bold mb-2 gap-2">
-                  <span className="text-xl text-white">Executive IT Director</span>
-                  <span className="text-xs text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full border border-brand-orange/20">2024 - Present</span>
-                </div>
-                <div className="text-brand-blue text-sm font-medium mb-4">Tech Innovations Group</div>
-                <p className="text-sm text-gray-400">Leading the IT department and directing comprehensive enterprise architectural strategies. Optimizing systems for maximum efficiency.</p>
+
+        <div className="w-full relative">
+          {/* Vertical Line */}
+          <div className="absolute left-3 top-2 bottom-6 w-px bg-white/10"></div>
+
+          <div className="space-y-16">
+
+            {/* Card 1 */}
+            <div className="relative pl-12 group">
+              {/* Indicator */}
+              <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full flex items-center justify-center bg-[#0f1015]">
+                <div className="w-3 h-3 rounded-full bg-brand-orange shadow-[0_0_15px_rgba(249,115,22,0.8)]"></div>
               </div>
-            </div>
-          </div>
-          {/* Card 2 */}
-          <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#0f1015] bg-[#1a1b23] text-gray-400 shadow shrink-0 md:mx-auto absolute left-0 md:relative z-10"></div>
-            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] pb-4 ml-auto lg:ml-0 md:group-even:text-right">
-              <div className="glass-effect p-6 rounded-2xl border border-[#282a36] ml-4 md:ml-0 md:group-odd:ml-6 md:group-even:mr-6 text-left relative before:absolute before:top-1/2 before:-translate-y-1/2 before:w-3 before:h-3 before:bg-[#1a1b23] before:border-l before:border-b before:border-[#282a36] before:rotate-45 group-odd:before:-left-[7px] md:group-even:before:-right-[7px] md:group-even:before:border-none md:group-even:before:border-r md:group-even:before:border-t md:group-even:before:border-[#282a36]">
-                <div className="flex flex-wrap items-center justify-between font-bold mb-2 gap-2">
-                  <span className="text-xl text-white">Project Manager</span>
-                  <span className="text-xs text-gray-400 bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700">2020 - 2024</span>
-                </div>
-                <div className="text-brand-blue text-sm font-medium mb-4">DataCorp Solutions</div>
-                <p className="text-sm text-gray-400">Managed full lifecycle of multi-million dollar data projects. Spearheaded cross-functional teams to deliver highly scalable applications.</p>
+
+              <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                <h3 className="text-2xl font-bold text-white mb-2 md:mb-0">Director of Production</h3>
+                <span className="text-sm font-medium text-brand-orange bg-[#2a1a14] px-4 py-1.5 rounded-full inline-block w-fit">2025 — Present</span>
               </div>
+
+              <div className="text-brand-blue text-lg font-medium mb-4">@ DeskTeam360</div>
+              <p className="text-gray-400 leading-relaxed">
+                Overseeing end-to-end production pipelines, optimizing resource allocation, and driving strategic growth initiatives.
+              </p>
             </div>
-          </div>
-          {/* Card 3 */}
-          <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#0f1015] bg-[#1a1b23] text-gray-400 shadow shrink-0 md:mx-auto absolute left-0 md:relative z-10"></div>
-            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] pb-4 ml-auto md:ml-0 md:group-even:text-right">
-              <div className="glass-effect p-6 rounded-2xl border border-[#282a36] ml-4 md:ml-0 md:group-odd:ml-6 md:group-even:mr-6 text-left relative before:absolute before:top-1/2 before:-translate-y-1/2 before:w-3 before:h-3 before:bg-[#1a1b23] before:border-l before:border-b before:border-[#282a36] before:rotate-45 group-odd:before:-left-[7px] md:group-even:before:-right-[7px] md:group-even:before:border-none md:group-even:before:border-r md:group-even:before:border-t md:group-even:before:border-[#282a36]">
-                <div className="flex flex-wrap items-center justify-between font-bold mb-2 gap-2">
-                  <span className="text-xl text-white">Senior Developer</span>
-                  <span className="text-xs text-gray-400 bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700">2015 - 2020</span>
-                </div>
-                <div className="text-brand-blue text-sm font-medium mb-4">WebTechies</div>
-                <p className="text-sm text-gray-400">Developed state-of-the-art web applications utilizing modern JavaScript frameworks. Supervised junior devs and established CI/CD pipelines.</p>
+
+            {/* Card 2 */}
+            <div className="relative pl-12 group">
+              {/* Indicator */}
+              <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full flex items-center justify-center bg-[#0f1015]">
+                <div className="w-3 h-3 rounded-full border-2 border-gray-600 bg-transparent"></div>
               </div>
+
+              <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                <h3 className="text-2xl font-bold text-white mb-2 md:mb-0">Project Manager</h3>
+                <span className="text-sm font-medium text-gray-400 bg-white/5 border border-white/5 px-4 py-1.5 rounded-full inline-block w-fit">2023 — 2025</span>
+              </div>
+
+              <div className="text-brand-blue text-lg font-medium mb-4">@ DeskTeam360</div>
+              <p className="text-gray-400 leading-relaxed">
+                Managed cross-functional teams to deliver high-stakes software projects on time and within budget.
+              </p>
             </div>
+
+            {/* Card 3 */}
+            <div className="relative pl-12 group">
+              {/* Indicator */}
+              <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full flex items-center justify-center bg-[#0f1015]">
+                <div className="w-3 h-3 rounded-full border-2 border-gray-600 bg-transparent"></div>
+              </div>
+
+              <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                <h3 className="text-2xl font-bold text-white mb-2 md:mb-0">Dosen Praktisi</h3>
+                <span className="text-sm font-medium text-gray-400 bg-white/5 border border-white/5 px-4 py-1.5 rounded-full inline-block w-fit">2022 — Present</span>
+              </div>
+
+              <div className="text-brand-blue text-lg font-medium mb-4">@ UNIGA</div>
+              <p className="text-gray-400 leading-relaxed">
+                Mentoring the next generation of tech talent, bridging academic theory with practical industry demands.
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
