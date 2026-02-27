@@ -1,350 +1,268 @@
-'use client';
-
-import Image from 'next/image';
-import { Mail, Briefcase, ChevronRight, Github, Code2, Database, Layout, Headphones, ArrowUpRight, BarChart3, Target, Settings, Rocket } from 'lucide-react';
+import { TreePine, Menu, MapPin, ClipboardCheck, HandCoins, Apple, Play } from "lucide-react";
 
 export default function Home() {
-  const scrollTo = (id: string) => {
-    const elem = document.getElementById(id);
-    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <div className="min-h-screen bg-[#0f1015] text-[#f3f4f6] font-sans selection:bg-brand-blue selection:text-white pb-10 overflow-x-hidden">
-
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full z-50 glass-effect border-b border-[#282a36]">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="font-bold text-xl tracking-tight">R. Hari Setiawan, S.Kom., M.M.</div>
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-            <button onClick={() => scrollTo('home')} className="hover:text-white transition-colors">Home</button>
-            <button onClick={() => scrollTo('expertise')} className="hover:text-white transition-colors">Expertise</button>
-            <button onClick={() => scrollTo('projects')} className="hover:text-white transition-colors">Projects</button>
-            <button onClick={() => scrollTo('experience')} className="hover:text-white transition-colors">Experience</button>
-            <button onClick={() => scrollTo('contact')} className="px-5 py-2.5 rounded-full bg-[#1a1b23] border border-[#282a36] text-white hover:bg-[#282a36] transition-all">Contact Me</button>
-          </div>
+    <div className="min-h-screen font-sans">
+      {/* 1. Header */}
+      <header className="bg-[#0A192F] text-white py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50 shadow-md">
+        <div className="flex items-center space-x-3 cursor-pointer group">
+          <TreePine className="w-8 h-8 text-[#D4AF37] group-hover:scale-110 transition-transform duration-300" />
+          <span className="font-serif font-bold text-xl tracking-wider uppercase text-white group-hover:text-[#F8F9FA] transition-colors">
+            Willow <span className="font-light text-[#D4AF37]">Insurance Corp.</span>
+          </span>
         </div>
-      </nav>
+        <button className="text-white hover:text-[#D4AF37] transition-colors p-2" aria-label="Menu">
+          <Menu className="w-7 h-7" />
+        </button>
+      </header>
 
-      {/* Hero Section */}
-      <section id="home" className="pt-40 pb-20 px-6 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-16 relative">
-        <div className="absolute top-40 left-0 w-96 h-96 bg-brand-blue/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
+      {/* 2. Hero Section */}
+      <section className="relative w-full h-[85vh] min-h-[600px] flex items-center justify-center bg-gray-200">
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/hero.png')" }}
+        />
+        {/* Subtle overlay for whole image to balance it */}
+        <div className="absolute inset-0 bg-black/20" />
 
-        <div className="flex-1 space-y-8 z-10">
-          <div className="inline-block text-brand-blue font-semibold tracking-wide text-sm uppercase">Creative & Data-Driven Professional</div>
-          <h1 className="text-5xl lg:text-7xl font-bold leading-tight tracking-tighter">
-            R. Hari Setiawan,<br /> <span className="text-gray-400">S.Kom., M.M.</span>
+        {/* Content Box with white translucent background to ensure dark text reads well */}
+        <div className="relative z-10 max-w-4xl mx-auto px-6 py-12 md:py-16 text-center bg-white/85 backdrop-blur-sm border border-white/50 shadow-2xl rounded-2xl mx-4 transform transition-all duration-700 hover:scale-[1.02]">
+          <h1 className="font-serif text-4xl md:text-6xl font-extrabold text-[#0A192F] mb-6 leading-tight drop-shadow-sm">
+            Saskatchewan Auto, Home & Farm Insurance
           </h1>
-          <p className="text-gray-400 text-lg max-w-xl leading-relaxed">
-            Bridging the gap between code and business value. Focus on building scalable data systems and guiding teams to operational excellence.
+          <p className="font-sans text-lg md:text-2xl text-gray-800 mb-8 max-w-3xl mx-auto font-medium">
+            Trusted insurance advice in plain language — protecting Saskatchewan families, farmers & businesses.
           </p>
-          <div className="flex items-center gap-4 pt-4">
-            <button onClick={() => scrollTo('projects')} className="px-8 py-4 bg-brand-blue text-white rounded-lg font-medium hover:bg-blue-700 transition-all flex items-center gap-2">
-              View Portfolio <ChevronRight size={18} />
-            </button>
-            <button onClick={() => scrollTo('contact')} className="px-8 py-4 bg-[#1a1b23] border border-[#282a36] text-white rounded-lg font-medium hover:bg-[#282a36] transition-all">
-              Contact Me
-            </button>
-          </div>
-        </div>
-
-        <div className="flex-1 relative w-full max-w-md lg:max-w-lg aspect-square lg:aspect-[4/5] rounded-2xl overflow-hidden glass-effect border border-[#282a36] p-2">
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f1015]/80 to-transparent z-10 pointer-events-none" />
-          <Image
-            src="/portrait.png"
-            alt="Portrait"
-            fill
-            className="object-cover rounded-xl"
-            priority
-          />
-          <div className="absolute bottom-6 left-6 z-20 flex items-center gap-4 glass-effect px-4 py-3 rounded-xl">
-            <div className="w-10 h-10 bg-brand-orange rounded-full flex items-center justify-center">
-              <Rocket size={20} className="text-white" />
-            </div>
-            <div>
-              <div className="text-sm font-semibold text-white">Current Focus</div>
-              <div className="text-xs text-gray-400">Scaling DashTeam360 Operations</div>
-            </div>
+          <div className="inline-block bg-[#0A192F] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-[#1a365d] hover:shadow-xl transition-all duration-300 cursor-pointer">
+            Call Today! (306) 555-0198
           </div>
         </div>
       </section>
 
-      {/* Core Competencies */}
-      <section id="expertise" className="py-24 px-6 max-w-7xl mx-auto relative">
-        <h2 className="text-2xl font-bold mb-12 flex items-center gap-4 before:content-[''] before:w-1 before:h-6 before:bg-brand-blue">
-          Core Competencies
-        </h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="glass-effect p-8 rounded-2xl border border-[#282a36] hover:border-brand-blue/50 transition-all group">
-            <div className="w-12 h-12 bg-brand-blue/10 rounded-xl flex items-center justify-center text-brand-blue mb-6 group-hover:bg-brand-blue group-hover:text-white transition-all">
-              <BarChart3 size={24} />
-            </div>
-            <h3 className="text-xl font-bold mb-4 text-white">Data-Driven Management</h3>
-            <p className="text-gray-400 leading-relaxed text-sm">
-              Leveraging data analytics to drive strategic business decisions and optimize operational workflows with precision.
-            </p>
-          </div>
-          <div className="glass-effect p-8 rounded-2xl border border-[#282a36] hover:border-brand-blue/50 transition-all group">
-            <div className="w-12 h-12 bg-brand-blue/10 rounded-xl flex items-center justify-center text-brand-blue mb-6 group-hover:bg-brand-blue group-hover:text-white transition-all">
-              <Settings size={24} />
-            </div>
-            <h3 className="text-xl font-bold mb-4 text-white">Operational Excellence</h3>
-            <p className="text-gray-400 leading-relaxed text-sm">
-              Implementing streamlined processes and managing cross-functional teams to ensure high efficiency and delivery.
-            </p>
-          </div>
-          <div className="glass-effect p-8 rounded-2xl border border-[#282a36] hover:border-brand-blue/50 transition-all group">
-            <div className="w-12 h-12 bg-brand-blue/10 rounded-xl flex items-center justify-center text-brand-blue mb-6 group-hover:bg-brand-blue group-hover:text-white transition-all">
-              <Target size={24} />
-            </div>
-            <h3 className="text-xl font-bold mb-4 text-white">Strategy Execution</h3>
-            <p className="text-gray-400 leading-relaxed text-sm">
-              Translating high-level corporate goals into actionable blueprints and ensuring robust project completions.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* 3. Why Us Section */}
+      <section className="bg-[#F8F9FA] py-20 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-center text-[#0A192F] mb-16 relative">
+            Why Us
+            <span className="block w-24 h-1 bg-[#D4AF37] mx-auto mt-6 rounded-full"></span>
+          </h2>
 
-      {/* Experience Timeline */}
-      <section id="experience" className="py-32 px-6 max-w-4xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl font-bold mb-20 relative text-white">
-          Experience Timeline
-          <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-brand-orange rounded-full"></span>
-        </h2>
-
-        <div className="w-full relative">
-          {/* Vertical Line */}
-          <div className="absolute left-3 top-2 bottom-6 w-px bg-white/10"></div>
-
-          <div className="space-y-16">
-
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Card 1 */}
-            <div className="relative pl-12 group">
-              {/* Indicator */}
-              <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full flex items-center justify-center bg-[#0f1015]">
-                <div className="w-3 h-3 rounded-full bg-brand-orange shadow-[0_0_15px_rgba(249,115,22,0.8)]"></div>
+            <div className="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.15)] transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-[#0A192F]/5 rounded-2xl flex items-center justify-center mb-6 text-[#0A192F] group-hover:bg-[#0A192F] group-hover:text-white transition-colors duration-500">
+                <MapPin className="w-8 h-8" />
               </div>
-
-              <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                <h3 className="text-2xl font-bold text-white mb-2 md:mb-0">Director of Production</h3>
-                <span className="text-sm font-medium text-brand-orange bg-[#2a1a14] px-4 py-1.5 rounded-full inline-block w-fit">2025 — Present</span>
-              </div>
-
-              <div className="text-brand-blue text-lg font-medium mb-4">@ DeskTeam360</div>
-              <p className="text-gray-400 leading-relaxed">
-                Overseeing end-to-end production pipelines, optimizing resource allocation, and driving strategic growth initiatives.
+              <h3 className="font-serif text-2xl font-bold text-[#0A192F] mb-4">Local Expertise You Can Trust</h3>
+              <p className="text-gray-600 leading-relaxed font-sans text-lg">
+                We use local expertise you can trust to build the sector with better, more reliable insurance solutions tailored to Saskatchewan.
               </p>
             </div>
 
             {/* Card 2 */}
-            <div className="relative pl-12 group">
-              {/* Indicator */}
-              <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full flex items-center justify-center bg-[#0f1015]">
-                <div className="w-3 h-3 rounded-full border-2 border-gray-600 bg-transparent"></div>
+            <div className="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.15)] transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-[#0A192F]/5 rounded-2xl flex items-center justify-center mb-6 text-[#0A192F] group-hover:bg-[#0A192F] group-hover:text-white transition-colors duration-500">
+                <ClipboardCheck className="w-8 h-8" />
               </div>
-
-              <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                <h3 className="text-2xl font-bold text-white mb-2 md:mb-0">Project Manager</h3>
-                <span className="text-sm font-medium text-gray-400 bg-white/5 border border-white/5 px-4 py-1.5 rounded-full inline-block w-fit">2023 — 2025</span>
-              </div>
-
-              <div className="text-brand-blue text-lg font-medium mb-4">@ DeskTeam360</div>
-              <p className="text-gray-400 leading-relaxed">
-                Managed cross-functional teams to deliver high-stakes software projects on time and within budget.
+              <h3 className="font-serif text-2xl font-bold text-[#0A192F] mb-4">Clear Coverage, No Surprises</h3>
+              <p className="text-gray-600 leading-relaxed font-sans text-lg">
+                We come equipped with industry-leading protections. Transparent, clear coverage—no surprises when it matters most.
               </p>
             </div>
 
             {/* Card 3 */}
-            <div className="relative pl-12 group">
-              {/* Indicator */}
-              <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full flex items-center justify-center bg-[#0f1015]">
-                <div className="w-3 h-3 rounded-full border-2 border-gray-600 bg-transparent"></div>
+            <div className="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.15)] transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-[#0A192F]/5 rounded-2xl flex items-center justify-center mb-6 text-[#0A192F] group-hover:bg-[#0A192F] group-hover:text-white transition-colors duration-500">
+                <HandCoins className="w-8 h-8" />
               </div>
-
-              <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                <h3 className="text-2xl font-bold text-white mb-2 md:mb-0">Dosen Praktisi</h3>
-                <span className="text-sm font-medium text-gray-400 bg-white/5 border border-white/5 px-4 py-1.5 rounded-full inline-block w-fit">2022 — Present</span>
-              </div>
-
-              <div className="text-brand-blue text-lg font-medium mb-4">@ UNIGA</div>
-              <p className="text-gray-400 leading-relaxed">
-                Mentoring the next generation of tech talent, bridging academic theory with practical industry demands.
+              <h3 className="font-serif text-2xl font-bold text-[#0A192F] mb-4">Full-Service Convenience</h3>
+              <p className="text-gray-600 leading-relaxed font-sans text-lg">
+                Enjoy full-service convenience as our specialized advisors handle your policies with utmost care and efficiency.
               </p>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* Stats section */}
-      <section className="py-20 border-y border-[#282a36] bg-[#1a1b23]/30">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-[#282a36]">
-          <div className="pt-6 md:pt-0">
-            <div className="text-5xl lg:text-6xl font-black text-white mb-2 flex items-center justify-center">10<span className="text-brand-blue text-4xl ml-1">+</span></div>
-            <div className="text-gray-400 tracking-widest text-xs font-semibold uppercase">Years Experience</div>
-          </div>
-          <div className="pt-6 md:pt-0">
-            <div className="text-5xl lg:text-6xl font-black text-white mb-2 flex items-center justify-center">50<span className="text-brand-blue text-4xl ml-1">+</span></div>
-            <div className="text-gray-400 tracking-widest text-xs font-semibold uppercase">Projects Completed</div>
-          </div>
-          <div className="pt-6 md:pt-0">
-            <div className="text-5xl lg:text-6xl font-black text-white mb-2 flex items-center justify-center">500<span className="text-brand-orange text-4xl ml-1">+</span></div>
-            <div className="text-gray-400 tracking-widest text-xs font-semibold uppercase">Clients Over The Globe</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Tech Stack */}
-      <section className="pt-24 pb-12 px-6 max-w-7xl mx-auto text-center flex flex-col items-center">
-        <h3 className="text-lg font-bold text-white mb-2 tracking-wide">Technology Stack & Tools</h3>
-        <p className="text-gray-400 text-sm mb-12 max-w-lg mx-auto">Mastery over a modern array of tools designed for high performance.</p>
-        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500 cursor-default">
-          <Code2 size={40} className="hover:text-brand-blue transition-colors" />
-          <Database size={40} className="hover:text-brand-blue transition-colors" />
-          <Layout size={40} className="hover:text-brand-blue transition-colors" />
-          <Github size={40} className="hover:text-white transition-colors" />
-          <Settings size={40} className="hover:text-brand-blue transition-colors" />
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section id="projects" className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="flex justify-between items-end mb-12">
-          <h2 className="text-2xl font-bold flex flex-col gap-2">
-            Featured Projects
+      {/* 4. Our Services Section */}
+      <section className="bg-white py-20 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-center text-[#0A192F] mb-16 relative">
+            Our Services
+            <span className="block w-24 h-1 bg-[#D4AF37] mx-auto mt-6 rounded-full"></span>
           </h2>
-          <a href="#" className="flex items-center gap-2 text-brand-blue hover:text-white transition-colors text-sm font-medium">
-            View all work <ArrowUpRight size={16} />
-          </a>
-        </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Project 1 */}
-          <div className="group rounded-2xl overflow-hidden glass-effect border border-[#282a36]">
-            <div className="h-64 bg-gray-800 w-full relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-transparent z-10mix-blend-overlay"></div>
-              {/* Just a placeholder mock for the image using gradient for now */}
-              <div className="absolute inset-0 bg-[#1a1b23] group-hover:scale-105 transition-transform duration-700 flex items-center justify-center">
-                <Layout size={64} className="text-brand-orange/20" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Service 1 */}
+            <div className="group relative rounded-2xl overflow-hidden aspect-[3/4] shadow-lg cursor-pointer">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{ backgroundImage: "url('/images/auto.png')" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/40 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="absolute inset-x-0 bottom-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 className="font-serif text-2xl font-bold text-white mb-2">Auto Insurance</h3>
+                <div className="h-1 w-12 bg-[#D4AF37] rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></div>
               </div>
             </div>
-            <div className="p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-xs font-bold text-brand-orange bg-brand-orange/10 px-2 py-1 rounded">UX/UI</span>
-                <span className="text-xs font-bold text-gray-400 bg-gray-800 px-2 py-1 rounded">DASHBOARD</span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand-blue transition-colors">DashTeam360 Information Program</h3>
-              <p className="text-sm text-gray-400 mb-6">A comprehensive administrative portal for process control, tracking operational cycles in logistics across regions.</p>
-              <a href="#" className="flex items-center gap-2 text-sm text-brand-blue font-semibold hover:gap-3 transition-all">
-                Explore Case Study <ChevronRight size={16} />
-              </a>
-            </div>
-          </div>
 
-          {/* Project 2 */}
-          <div className="group rounded-2xl overflow-hidden glass-effect border border-[#282a36]">
-            <div className="h-64 bg-gray-800 w-full relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-bl from-brand-orange/10 to-transparent z-10mix-blend-overlay"></div>
-              <div className="absolute inset-0 bg-[#1a1b23] group-hover:scale-105 transition-transform duration-700 flex items-center justify-center">
-                <Database size={64} className="text-brand-blue/20" />
+            {/* Service 2 */}
+            <div className="group relative rounded-2xl overflow-hidden aspect-[3/4] shadow-lg cursor-pointer">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{ backgroundImage: "url('/images/farm.png')" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/40 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="absolute inset-x-0 bottom-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 className="font-serif text-2xl font-bold text-white mb-2">Farm Insurance</h3>
+                <div className="h-1 w-12 bg-[#D4AF37] rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></div>
               </div>
             </div>
-            <div className="p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-xs font-bold text-brand-blue bg-brand-blue/10 px-2 py-1 rounded">DATA</span>
-                <span className="text-xs font-bold text-gray-400 bg-gray-800 px-2 py-1 rounded">ENTERPRISE</span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand-blue transition-colors">Automated Data Indexing System</h3>
-              <p className="text-sm text-gray-400 mb-6">Cloud-based data mining framework to automate data gathering, enhancing dataset synchronization and review speeds.</p>
-              <a href="#" className="flex items-center gap-2 text-sm text-brand-blue font-semibold hover:gap-3 transition-all">
-                Explore Case Study <ChevronRight size={16} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Quote/Rhythm */}
-      <section className="py-12 px-6 max-w-5xl mx-auto">
-        <div className="glass-effect p-10 md:p-16 rounded-3xl border border-[#282a36] relative overflow-hidden">
-          <div className="absolute right-0 bottom-0 pointer-events-none opacity-20">
-            <Headphones size={240} className="text-brand-blue -mb-16 -mr-16" />
-          </div>
-          <div className="relative z-10 grid md:grid-cols-[1fr_auto] gap-8 items-center">
-            <div>
-              <div className="flex items-center gap-2 text-brand-orange text-sm font-bold tracking-wider mb-4 uppercase">
-                <span className="w-6 h-0.5 bg-brand-orange"></span> Lifestyle
+            {/* Service 3 */}
+            <div className="group relative rounded-2xl overflow-hidden aspect-[3/4] shadow-lg cursor-pointer">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{ backgroundImage: "url('/images/home.png')" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/40 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="absolute inset-x-0 bottom-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 className="font-serif text-2xl font-bold text-white mb-2">Home Insurance</h3>
+                <div className="h-1 w-12 bg-[#D4AF37] rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></div>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Finding rhythm outside of code.</h2>
-              <p className="text-gray-400">Balance is key to engineering success. For me, it is the beat and rhythm of music.</p>
             </div>
-            <div className="flex items-end gap-1 h-16 w-24">
-              {[1, 2, 3, 4, 5, 6].map((bar, i) => (
-                <div key={i} className="w-3 bg-brand-blue/60 rounded-t-sm" style={{ height: `${Math.max(20, Math.random() * 100)}%`, animation: `pulse ${1 + Math.random()}s infinite alternate` }}></div>
-              ))}
+
+            {/* Service 4 */}
+            <div className="group relative rounded-2xl overflow-hidden aspect-[3/4] shadow-lg cursor-pointer">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{ backgroundImage: "url('/images/notary.png')" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/40 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="absolute inset-x-0 bottom-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 className="font-serif text-2xl font-bold text-white mb-2">Notary Services</h3>
+                <div className="h-1 w-12 bg-[#D4AF37] rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 origin-left"></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 relative flex flex-col items-center">
-        <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-brand-blue/5 to-transparent pointer-events-none z-0"></div>
-        <div className="max-w-xl w-full text-center relative z-10">
-          <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-gray-400 text-sm mb-12">Looking to collaborate or need enterprise solutions? Let's discuss.</p>
+      {/* 5. About Us & App Download Section */}
+      <section className="bg-[#F8F9FA] py-24 px-6 md:px-12 border-y border-gray-200">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Left Column */}
+          <div className="space-y-8">
+            <h2 className="font-serif text-5xl font-bold text-[#0A192F] leading-tight">
+              About Us
+            </h2>
+            <h3 className="font-serif text-3xl font-medium text-[#D4AF37] leading-tight">
+              Willow Insurance was built on one belief.
+            </h3>
+            <p className="text-gray-700 font-sans text-xl leading-relaxed">
+              We started our journey knowing that communities flourish when families and businesses are protected against the unpredictable. Bringing together decades of experience, our team serves Saskatchewan with honesty, deep local knowledge, and an unwavering commitment to standing by your side.
+            </p>
+          </div>
 
-          <form className="glass-effect p-8 rounded-2xl border border-[#282a36] text-left space-y-6">
-            <div className="grid grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-xs font-semibold text-gray-300">Name / Brand</label>
-                <input type="text" placeholder="John Doe" className="w-full bg-[#0f1015] border border-[#282a36] rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-blue transition-colors" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-semibold text-gray-300">Email Address</label>
-                <input type="email" placeholder="john@example.com" className="w-full bg-[#0f1015] border border-[#282a36] rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-blue transition-colors" />
-              </div>
+          {/* Right Column */}
+          <div className="bg-white p-10 md:p-14 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.08)] flex flex-col items-center text-center">
+            <h3 className="font-serif text-2xl font-bold text-[#0A192F] mb-4">
+              Download the app to book an appointment
+            </h3>
+            <p className="text-gray-600 font-sans text-lg mb-8 max-w-sm">
+              Manage your policies, file claims instantly, and connect with your advisor anywhere, anytime.
+            </p>
+
+            <div className="bg-gray-100 p-4 rounded-xl mb-10 w-48 h-48 border-2 border-dashed border-gray-300 flex items-center justify-center">
+              <div className="text-sm text-gray-400 font-medium">QR CODE PLACEHOLDER</div>
             </div>
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-gray-300">Subject</label>
-              <input type="text" placeholder="Project Inquiry" className="w-full bg-[#0f1015] border border-[#282a36] rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-blue transition-colors" />
+
+            <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+              <button className="flex items-center justify-center gap-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors w-full sm:w-auto font-sans">
+                <Apple className="w-6 h-6" />
+                <div className="text-left">
+                  <div className="text-xs text-gray-300">Download on the</div>
+                  <div className="font-semibold leading-tight">App Store</div>
+                </div>
+              </button>
+              <button className="flex items-center justify-center gap-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors w-full sm:w-auto font-sans">
+                <Play className="w-5 h-5 ml-1" />
+                <div className="text-left">
+                  <div className="text-xs text-gray-300">GET IT ON</div>
+                  <div className="font-semibold leading-tight">Google Play</div>
+                </div>
+              </button>
             </div>
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-gray-300">Message</label>
-              <textarea placeholder="Tell me about your exciting project..." rows={4} className="w-full bg-[#0f1015] border border-[#282a36] rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-blue transition-colors resize-none"></textarea>
-            </div>
-            <button type="button" className="w-full bg-brand-blue hover:bg-blue-600 text-white font-semibold py-4 rounded-lg transition-colors">
-              Send Message
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Bottom CTA Section */}
+      <section className="bg-gradient-to-br from-[#0A192F] to-[#122b54] py-24 px-6 md:px-12 text-center relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#D4AF37] opacity-10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
+
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
+            Get coverage that truly fits your life
+          </h2>
+          <p className="text-blue-100 font-sans text-xl mb-12 opacity-90 max-w-2xl mx-auto">
+            Take the next step in securing your future. Get more options. Get coverage that truly fits your life today.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <button className="bg-white text-[#0A192F] hover:bg-gray-100 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              Call Now
             </button>
-            <p className="text-center text-xs text-gray-500 mt-4">Prefer sending an email? <a href="mailto:rhari.setiawan@gmail.com" className="text-brand-blue hover:underline">rhari.setiawan@gmail.com</a></p>
-          </form>
+            <button className="bg-[#D4AF37] text-[#0A192F] hover:bg-[#c3b091] px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-transparent">
+              Get a Quote Online
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-[#282a36] pt-16 pb-8 px-6 mt-16 relative z-10 w-full glass-effect">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2">Let's Build Something <br /><span className="text-brand-blue">Great.</span></h2>
-            <p className="text-gray-400 text-sm max-w-sm mt-6">Open for collaboration on data integration and computing architecture.</p>
-          </div>
-          <div className="flex flex-col items-start md:items-end">
-            <a href="mailto:rhari.setiawan@gmail.com" className="text-2xl font-bold hover:text-brand-blue transition-colors mb-4 border-b-2 border-transparent hover:border-brand-blue">
-              rhari.setiawan@gmail.com
-            </a>
-            <div className="flex items-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-[#282a36] flex items-center justify-center hover:bg-brand-blue hover:border-brand-blue transition-colors"><Image src="/next.svg" alt="Social" width={16} height={16} className="invert" /></a>
-              <a href="#" className="w-10 h-10 rounded-full border border-[#282a36] flex items-center justify-center hover:bg-brand-blue hover:border-brand-blue transition-colors"><span className="font-bold">in</span></a>
-              <a href="#" className="w-10 h-10 rounded-full border border-[#282a36] flex items-center justify-center hover:bg-brand-blue hover:border-brand-blue transition-colors"><Github size={18} /></a>
+      {/* 7. Footer */}
+      <footer className="bg-[#0A192F] pt-20 pb-10 px-6 md:px-12 border-t border-white/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+            <div className="flex items-center space-x-2 mb-8 md:mb-0">
+              <TreePine className="w-6 h-6 text-[#D4AF37]" />
+              <span className="font-serif font-bold text-lg tracking-widest uppercase text-white">
+                Willow <span className="font-light text-[#D4AF37]">Insurance Corp.</span>
+              </span>
+            </div>
+
+            <div className="flex gap-6">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[#D4AF37] hover:text-[#0A192F] transition-colors">
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" /></svg>
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[#D4AF37] hover:text-[#0A192F] transition-colors">
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[#D4AF37] hover:text-[#0A192F] transition-colors">
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+              </a>
             </div>
           </div>
-        </div>
 
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 pt-8 border-t border-[#282a36]/50">
-          <p>© {new Date().getFullYear()} R. Hari Setiawan. All Rights Reserved.</p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          <div className="w-full h-px bg-white/10 mb-8"></div>
+
+          <div className="flex flex-col md:flex-row justify-between text-gray-400 font-sans text-sm gap-8">
+            <div className="flex flex-wrap gap-8">
+              <a href="#" className="hover:text-white transition-colors">Shell Lake</a>
+              <a href="#" className="hover:text-white transition-colors">Debden</a>
+              <a href="#" className="hover:text-white transition-colors">Contact Us</a>
+              <a href="#" className="hover:text-white transition-colors">Email</a>
+            </div>
+            <div className="flex flex-wrap gap-8">
+              <a href="#" className="hover:text-white transition-colors">Legal</a>
+              <a href="#" className="hover:text-white transition-colors">Privacy</a>
+              <a href="#" className="hover:text-white transition-colors">Feedback</a>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center text-gray-500 text-sm">
+            &copy; {new Date().getFullYear()} Willow Insurance Corp. All rights reserved.
           </div>
         </div>
       </footer>
